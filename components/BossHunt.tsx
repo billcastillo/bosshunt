@@ -72,8 +72,8 @@ export default function Home() {
       <Autocomplete
         id="boss-select"
         options={bosses}
-        getOptionLabel={(boss: Boss) => boss.name}
-        onChange={(event, newValue: Boss | null) => {
+        getOptionLabel={(boss: BossProps) => boss.name}
+        onChange={(event, newValue: BossProps | null) => {
           setSelectedBoss(newValue);
           setRespawnTime(null);
           setWebhookStatus(null);
