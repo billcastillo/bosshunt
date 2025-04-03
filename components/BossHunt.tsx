@@ -11,31 +11,14 @@ import {
   Container,
 } from "@mui/material";
 import { format, addHours } from "date-fns";
-
-// Define TypeScript interfaces
-interface Boss {
-  id: number;
-  name: string;
-  respawnHours: number;
-}
+import type { BossProps } from "@/interface/boss";
+import { bosses } from "@/constants/config";
 
 export default function Home() {
-  const [selectedBoss, setSelectedBoss] = useState<Boss | null>(null);
+  const [selectedBoss, setSelectedBoss] = useState<BossProps | null>(null);
   const [respawnTime, setRespawnTime] = useState<Date | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [webhookStatus, setWebhookStatus] = useState<string | null>(null);
-
-  // Sample boss data with respawn times in hours
-  const bosses: Boss[] = [
-    { id: 1, name: "Dragon Lord", respawnHours: 12 },
-    { id: 2, name: "Elder Lich", respawnHours: 8 },
-    { id: 3, name: "Frost Giant", respawnHours: 6 },
-    { id: 4, name: "Phoenix Queen", respawnHours: 24 },
-    { id: 5, name: "Shadow Warlord", respawnHours: 10 },
-    { id: 6, name: "Void Behemoth", respawnHours: 48 },
-    { id: 7, name: "Crimson Drake", respawnHours: 16 },
-    { id: 8, name: "Ancient Golem", respawnHours: 4 },
-  ];
 
   const calculateRespawnTime = (): void => {
     if (!selectedBoss) return;

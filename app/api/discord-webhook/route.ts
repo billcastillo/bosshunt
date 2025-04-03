@@ -53,11 +53,11 @@ export async function POST(request: NextRequest) {
 
     // Create the Discord webhook payload
     const payload: DiscordWebhookPayload = {
-      content: `Boss Respawn Alert - ${bossName}`,
+      content: `**${bossName}**`,
       embeds: [
         {
-          title: `${bossName} next respawn time`,
-          description: `The boss will respawn at the following time:`,
+          title: "",
+          description: "",
           color: 3447003, // Discord blue color
           fields: [
             {
