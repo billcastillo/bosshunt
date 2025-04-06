@@ -24,8 +24,9 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import SendIcon from "@mui/icons-material/Send";
 import type { BossProps, SavedBossProps } from "@/interface/boss";
 import { bosses } from "@/constants/config";
+import CountdownTimer from "./CountdownTimer";
 
-export default function Home() {
+export default function BossHunt() {
   const [selectedBoss, setSelectedBoss] = useState<BossProps | null>(null);
   const [respawnTime, setRespawnTime] = useState<Date | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -212,7 +213,7 @@ export default function Home() {
         renderInput={(params) => (
           <TextField
             {...params}
-            label="Choose boss"
+            label="Choose Boss"
             variant="outlined"
             fullWidth
             margin="normal"
@@ -367,9 +368,17 @@ export default function Home() {
                   sx={{ pb: 1 }}
                 />
                 <CardContent sx={{ py: 1 }}>
-                  <Typography variant="body1" sx={{ fontWeight: "medium" }}>
+                  {/* <Typography variant="body1" sx={{ fontWeight: "medium" }}> 
                     Next Respawn: {format(respawnDate, "PPpp")}
-                  </Typography>
+                  </Typography>*/}
+                  {/* // Replace lines 370-372 with this: */}
+                  <CountdownTimer
+                    targetDate={respawnDate}
+                    onComplete={() => {
+                      // Optional: You can add logic here when the timer completes
+                      // For example, play a sound or show a notification
+                    }}
+                  />
                 </CardContent>
                 <CardActions sx={{ justifyContent: "flex-end" }}>
                   <Button
