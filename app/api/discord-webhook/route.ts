@@ -7,6 +7,7 @@ interface WebhookRequestBody {
   bossName: string;
   respawnTime: string;
   respawnHours: number;
+  customTimeUsed: boolean;
 }
 
 interface DiscordWebhookPayload {
@@ -38,7 +39,7 @@ export async function POST(request: NextRequest) {
 
     // Parse the request body
     const body: WebhookRequestBody = await request.json();
-    const { bossName, respawnTime, respawnHours } = body;
+    const { bossName, respawnTime, respawnHours, customTimeUsed } = body;
 
     // Validate the required fields
     if (!bossName || !respawnTime) {
